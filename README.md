@@ -1,5 +1,7 @@
 # Field Book Forecast
 
+Live: https://field-book-forecast.vercel.app
+
 A National Weather Service point forecast for your saved places, built as an installable PWA. It replaces the forecast.weather.gov MapClick page.
 
 ## What's here
@@ -20,7 +22,7 @@ Then open http://localhost:8787.
 
 ## Install on a phone
 
-Install needs HTTPS. Put the `app/` folder on any static host, such as Vercel, Netlify, GitHub Pages or Cloudflare Pages. Then:
+Install needs HTTPS. The live copy is on Vercel (project `field-book-forecast`, root directory `app/`). Deploy changes with `vercel deploy --prod` from `app/`, or connect the repo in Vercel so pushes to `main` deploy automatically. Any static host works too. Then:
 
 - **iPhone:** open the site in Safari, tap Share, then Add to Home Screen.
 - **Android or desktop Chrome:** open Places and tap Install app, or use the browser's install button.
