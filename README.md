@@ -1,6 +1,6 @@
-# Field Book Forecast
+# NOAA-It-All
 
-Live: https://field-book-forecast.vercel.app
+Live: https://noaa-it-all.vercel.app
 
 A National Weather Service point forecast for your saved places, built as an installable PWA. It replaces the forecast.weather.gov MapClick page.
 
@@ -22,7 +22,7 @@ Then open http://localhost:8787.
 
 ## Install on a phone
 
-Install needs HTTPS. The live copy is on Vercel (project `field-book-forecast`). The repo is connected, so every push to `main` deploys to production. `vercel.json` serves the `app/` folder with no build step. Any static host works too. Then:
+Install needs HTTPS. The live copy is on Vercel (project `noaa-it-all`). The repo is connected, so every push to `main` deploys to production. `vercel.json` serves the `app/` folder with no build step. Any static host works too. Then:
 
 - **iPhone:** open the site in Safari, tap Share, then Add to Home Screen.
 - **Android or desktop Chrome:** open Places and tap Install app, or use the browser's install button.

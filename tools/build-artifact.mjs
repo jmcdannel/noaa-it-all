@@ -6,7 +6,7 @@ const src = readFileSync(new URL('app/index.html', root), 'utf8');
 const leaflet = readFileSync(new URL('app/vendor/leaflet.css', root), 'utf8');
 const font = readFileSync(new URL('app/vendor/public-sans-latin.woff2', root)).toString('base64');
 const head = src.split('<head>')[1].split('</head>')[0]
-  .replace(/<!--PWA-HEAD-->[\s\S]*?<!--\/PWA-HEAD-->/, '<title>Field Book Forecast</title>')
+  .replace(/<!--PWA-HEAD-->[\s\S]*?<!--\/PWA-HEAD-->/, '<title>NOAA-It-All</title>')
   .replace(/<meta charset[^>]*>\s*/, '').replace(/<meta name="viewport"[^>]*>\s*/, '')
   .replace('<style>', '<style>\n' + leaflet + '\n')
   .replace('url("vendor/public-sans-latin.woff2")', 'url("data:font/woff2;base64,' + font + '")');

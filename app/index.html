@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!--PWA-HEAD-->
-<title>Field Book Forecast</title>
-<meta name="description" content="National Weather Service point forecasts for your saved places, set out like a field book.">
+<title>NOAA-It-All</title>
+<meta name="description" content="Every NOAA and National Weather Service forecast detail for your saved places, in one readable page.">
 <meta name="theme-color" content="#E9B300">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Field Book">
+<meta name="apple-mobile-web-app-title" content="NOAA-It-All">
 <link rel="stylesheet" href="vendor/leaflet.css">
 <!--/PWA-HEAD-->
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -807,7 +807,7 @@ function renderPage(p) {
       <nav class="cover-nav" aria-label="App"><button type="button" data-nav="places">${ICON.list}Places</button><button type="button" data-nav="map">${ICON.map}Map</button><button type="button" data-nav="search">${ICON.search}Search</button></nav>
     </div>
     <div class="cover-row">
-      <span class="imprint">Field Book<span class="imp-wide"> · NWS point forecast</span>${m ? ' · ' + esc(m.gridId) + ' ' + esc(m.grid) : ''}</span>
+      <span class="imprint">NOAA-It-All<span class="imp-wide"> · NWS point forecast</span>${m ? ' · ' + esc(m.gridId) + ' ' + esc(m.grid) : ''}</span>
       ${pages.length > 1 ? `<button class="turn" type="button" data-turn="-1" aria-label="Previous place"${i === 0 ? ' disabled' : ''}>${ICON.left}</button>${dots}<button class="turn" type="button" data-turn="1" aria-label="Next place"${i === pages.length - 1 ? ' disabled' : ''}>${ICON.right}</button>` : ''}
       <span class="pageno">${p.preview ? 'Not saved' : `p. ${i + 1} of ${places.length}`}</span>
     </div></div></header>`;
@@ -1116,7 +1116,7 @@ function setCurrent(i) {
   book.children[i].dataset.seen = '1';
   refresh(p);
   if (pages[i + 1]) refresh(pages[i + 1]);
-  document.title = placeName(p) + ' · Field Book Forecast';
+  document.title = placeName(p) + ' · NOAA-It-All';
 }
 let scrollT;
 book.addEventListener('scroll', () => {
@@ -1241,7 +1241,7 @@ function renderInstall() {
   const el = $('#installArea');
   if (standalone()) { el.innerHTML = ''; return; }
   if (deferredInstall) {
-    el.innerHTML = `<p class="hint">Keep Field Book on your home screen. It opens without a browser bar and works offline with the last forecast.</p><button class="btn yellow" type="button" id="doInstall">Install app</button>`;
+    el.innerHTML = `<p class="hint">Keep NOAA-It-All on your home screen. It opens without a browser bar and works offline with the last forecast.</p><button class="btn yellow" type="button" id="doInstall">Install app</button>`;
     $('#doInstall').onclick = async () => { deferredInstall.prompt(); await deferredInstall.userChoice; deferredInstall = null; renderInstall(); };
   } else if (/iPhone|iPad|iPod/.test(navigator.userAgent) && 'serviceWorker' in navigator) {
     el.innerHTML = `<p class="hint">To install on iPhone: tap Share in Safari, then <b>Add to Home Screen</b>.</p>`;

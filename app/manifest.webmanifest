@@ -1,7 +1,7 @@
 {
-  "name": "Field Book Forecast",
-  "short_name": "Field Book",
-  "description": "National Weather Service point forecasts for your saved places.",
+  "name": "NOAA-It-All",
+  "short_name": "NOAA-It-All",
+  "description": "Every NOAA and National Weather Service forecast detail for your saved places, in one readable page.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

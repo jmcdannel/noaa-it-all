@@ -5,7 +5,7 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const LAT = 44.682, LON = -116.162;
-const H = { 'User-Agent': '(field-book forecast prototype)', Accept: 'application/geo+json' };
+const H = { 'User-Agent': '(noaa-it-all forecast app)', Accept: 'application/geo+json' };
 const get = async (url) => {
   for (let i = 0; i < 3; i++) {
     const r = await fetch(url, { headers: H });
