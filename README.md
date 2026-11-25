@@ -22,7 +22,7 @@ Then open http://localhost:8787.
 
 ## Install on a phone
 
-Install needs HTTPS. The live copy is on Vercel (project `field-book-forecast`, root directory `app/`). Deploy changes with `vercel deploy --prod` from `app/`, or connect the repo in Vercel so pushes to `main` deploy automatically. Any static host works too. Then:
+Install needs HTTPS. The live copy is on Vercel (project `field-book-forecast`). The repo is connected, so every push to `main` deploys to production. `vercel.json` serves the `app/` folder with no build step. Any static host works too. Then:
 
 - **iPhone:** open the site in Safari, tap Share, then Add to Home Screen.
 - **Android or desktop Chrome:** open Places and tap Install app, or use the browser's install button.

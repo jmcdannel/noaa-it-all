@@ -9,3 +9,5 @@ node_modules/
 .impeccable/questions/
 .impeccable/hook.cache.json
 .impeccable/brief-body.md
+.vercel
+.env*.local
