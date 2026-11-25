@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-orienteering.html"
+        ],
+        "createdAt": "2026-11-25T15:40:08.027Z",
+        "reason": "Claude: throwaway decision-round sketch for an alternate direction, not shipped code"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-orienteering.html"
+        ],
+        "createdAt": "2026-11-25T15:40:08.046Z",
+        "reason": "Claude: throwaway decision-round sketch for an alternate direction, not shipped code"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "app/index.html"
+        ],
+        "createdAt": "2026-11-25T16:10:05.157Z",
+        "reason": "Claude: .dlg-h and .dlg-b pad with var(--gut)=max(16px, env(safe-area-inset-*)), which static analysis cannot resolve; the rendered Places and Search sheets show a 16px inset"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-orienteering.html"
+        ],
+        "createdAt": "2026-11-25T16:30:49.651Z",
+        "reason": "Claude: unchosen decision-round sketch for an alternate direction, not shipped; its font belongs to that direction, not DESIGN.md"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "app/index.html"
+        ],
+        "createdAt": "2026-11-25T17:20:30.484Z",
+        "reason": "Claude: 45-degree hatch is the documented snow encoding in DESIGN.md (timeline, snow-depth bars), data not decoration"
+      }
+    ]
+  }
+}

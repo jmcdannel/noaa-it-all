@@ -1,0 +1,11 @@
+.DS_Store
+.claude/
+.playwright-mcp/
+.vercel/
+node_modules/
+# local design-review scratch
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/hook.cache.json
+.impeccable/brief-body.md
