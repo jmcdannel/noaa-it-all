@@ -342,7 +342,7 @@ Three printed inks on a pale page (cover yellow, survey green, graphite), one ru
 - **Cover Graphite** (cover-ink): text, outlines and the label-box double rule on yellow. Night: cover-ink-night.
 
 ### Secondary
-- **Survey Green** (rule): the 1px rule beneath every section title, rules between period cards, the precip strip and precip-chance bars, snow hatching (trace, meteogram, timeline, snowpack bars), the dashed dew-point line, the cloud-cover outline, chart axis figures, stat, column and table-head labels, list numbers, link underlines, the strip scrollbar and the disclosure chevrons. Night: rule-night.
+- **Survey Green** (rule): the 1px rule beneath every section title, rules between period cards, the precip strip and precip-chance bars, snow hatching (trace, meteogram, timeline, snowpack bars), the dashed dew-point line, the cloud-cover outline, chart axis figures, stat, column and table-head labels, list numbers, link underlines, the strip scrollbar, the map-scrubber track ticks and day labels. Night: rule-night.
 - **Faint Survey Green** (rule-soft): the chart's degree grid, the cloud-cover fill, fog lines in the timeline, the status-line, alerts-line and sun-row overrules, the rule closing the stats grid, dividers between detailed-forecast, totals, hourly-table and station rows, skeleton bars. Night: rule-soft-night.
 
 ### Tertiary
@@ -402,13 +402,13 @@ Two standard scales are copied exactly from their owners and never re-tinted for
 
 **The Printed Head Rule.** Uppercase tracking is for heads printed over a column or a figure (period names, stat labels), the running head and nav-button labels. A short NWS name or sky word may be uppercased only in that head role. Section titles, place names, forecasts and NWS sentences are never uppercased.
 
-**The Titled Section Rule.** Every page section opens the same way: a 22px/800 sentence-case title on the left, an optional 13px soft-graphite note, a link, or (for a collapsible section) a 13px/600 graphite status line with a chevron on the right, baseline-aligned, and a 1px survey-green rule beneath with 12px above it. Context that belongs to the whole section (the snow level, the source office) goes in that note, not in a separate line. The at-a-glance lead is the one untitled block: it is the page's first entry, not a section.
+**The Titled Section Rule.** Every page section opens the same way: a 22px/800 sentence-case title on the left, an optional 13px soft-graphite note, a link, a 13px/600 graphite status line, or a two-button area toggle on the right, baseline-aligned, and a 1px survey-green rule beneath with 12px above it. Context that belongs to the whole section (the snow level, the source office) goes in that note, not in a separate line. The at-a-glance lead is the one untitled block: it is the page's first entry, not a section.
 
 ## Layout
 
 A horizontal book of full-width pages, one per saved place, with mandatory scroll-snap and `scroll-snap-stop: always`, so a swipe turns exactly one page. Each page scrolls vertically on its own. The body is a two-row grid: the book, then the bottom tab bar.
 
-Content sits in a 1100px column with a 16px gutter that grows to the safe-area insets. Sections stack in one column at every width: cover band, status line, alerts line, at-a-glance lead and sun row, Forecast periods, Precipitation ahead, Current conditions (with today's normals), Next 24 hours, Mountain conditions (collapsed), Detailed forecast, Map and radar, Forecast discussion, footer. Each titled section starts 30px below the one before; captions sit 10px under their content.
+Content sits in a 1100px column with a 16px gutter that grows to the safe-area insets. Sections stack in one column at every width: cover band, status line, alerts line, at-a-glance lead and sun row, Forecast periods, Precipitation ahead, Current conditions (with today's normals), Next 24 hours, Mountain conditions, Detailed forecast, Map and radar, Forecast maps, Forecast discussion, footer. Nothing on the page is collapsed: every section shows all its data, so scrolling is the only gesture needed to read it. Each titled section starts 30px below the one before; captions sit 10px under their content.
 
 - **Period strip:** a horizontally scrolling grid of 128 to 140px columns, each card spanning six subgrid rows (name, icon, short forecast, temperature, precip, snow) so every row lines up across the strip whatever the text length. Proximity snap to card starts; a thin rule-green scrollbar. On fine pointers, step buttons scroll by 80% of the strip.
 - **Stats:** an auto-fill grid of 140px-minimum cells with 16px row and 20px column gaps (two per row on a phone, up to six on desktop). The small variant uses 110px-minimum cells and no closing rule.
@@ -447,7 +447,7 @@ The book's cover: Survey Yellow, 20px plus the top safe area above, 14px below, 
 The opening of every page section (see The Titled Section Rule): a 22px/800 title, and on the right either a 13px soft-graphite note (with any key figure in graphite bold), the 12px underlined "Open full map" link, or a 14px/600 external link with an 11px arrow. In Forecast periods the right side also carries the step buttons on fine pointers. A 1px survey-green rule closes the head 12px below the title.
 
 ### Alerts Line
-Always present directly under the status line. With no alerts it is a single 14px soft-graphite sentence, "No active watches, warnings or advisories for this point.", closed by a faint survey-green rule. With alerts it becomes a stack of graphite-outlined page-2 boxes: triangle glyph in Alert Red for Severe/Extreme, circle-i for others; event name 15px bold; an "Until" time in soft graphite; NWS text in a disclosure with 11px label-style subheads.
+Always present directly under the status line. With no alerts it is a single 14px soft-graphite sentence, "No active watches, warnings or advisories for this point.", closed by a faint survey-green rule. With alerts it becomes a stack of graphite-outlined page-2 boxes: triangle glyph in Alert Red for Severe/Extreme, circle-i for others; event name 15px bold; an "Until" time in soft graphite; the NWS text always shown below, with 11px label-style subheads.
 
 ### At a Glance
 The page's lead entry, 18px under the alerts line, with no section title.
@@ -488,7 +488,7 @@ A section head (with the snow-level note when the grid supplies one), a readout 
 - **Scrub:** pointer or arrow keys move a dotted graphite cursor and a 3.5px graphite dot.
 
 ### Mountain Conditions
-A collapsible section, closed by default. Its head is the section title with a 13px/600 graphite status line (avalanche danger and snow depth, joined by a middot) and a rule-green chevron that turns 0.25s when open. Inside, blocks are headed in 13px/700 and divided by faint rules; each ends with a caption naming its source (avalanche.org and USDA SNOTEL are named as not NOAA).
+An open section. Its head is the section title with a 13px/600 graphite status line (avalanche danger and snow depth, joined by a middot). Nearby station readings load as the section nears the screen. Inside, blocks are headed in 13px/700 and divided by faint rules; each ends with a caption naming its source (avalanche.org and USDA SNOTEL are named as not NOAA).
 - **Avalanche danger badge:** a 96 by 64px minimum square block with a 2px graphite border, filled with the level's standard color: the level number at 24px/800 over its name at 12px/700. Beside it, the center's travel advice at 15px/1.5, capped at 60ch.
 - **Snowpack:** a small stat grid (Snow depth, Change in a day with a true minus, Snow water) and an 8-day bar chart 70px tall: hatched survey-green bars with a 1px survey-green outline open at the base, standing on a graphite baseline, with 10px day letters.
 - **Nearby stations:** rows divided by faint rules: name (15px bold) with a 12px detail line, the current temperature at 24px/800 with wind in 12px, a 36px graphite sparkline (1.6px, non-scaling) of the last 24 hours, and the range in 11px soft graphite. Stations load when the section opens.
@@ -514,7 +514,7 @@ Maps use grayscale OpenTopoMap tiles (inverted for night) so only the inks carry
 - **Full map:** a full-screen dialog with the yellow header, a hint box, and a page-colored pick panel that rises from the bottom with the picked spot and actions.
 
 ### Forecast Discussion
-A section head with the office as its note, a soft-graphite intro line, then each AFD section as a disclosure between survey-green rules: 16px/600 title with a 12px soft-graphite subtitle and the rule-green chevron, min 48px. Bodies are 15px at 1.55, capped at 68ch, with rule-green list markers.
+A section head with the office as its note, a soft-graphite intro line, then every AFD section in full between survey-green rules: a 16px/700 title with a 12px soft-graphite subtitle. Bodies are 15px at 1.55, capped at 68ch, with rule-green list markers.
 
 ### Buttons
 - **Shape:** square, 1px graphite outline, at least 44px tall, 16px side padding, 15px/600.
@@ -534,7 +534,7 @@ A section head with the office as its note, a soft-graphite intro line, then eac
 - **Save chip:** a cover-ink block with yellow 14px/600 text on the cover band, for an unsaved preview.
 
 ### Motion
-Short exponential ease-out (cubic-bezier(.16,1,.3,1)) for everything. The pencil draws once per page load (1.1s stroke-dashoffset). Sheets and the pick panel rise 24px while fading in (0.32s / 0.28s). Discussion and Mountain conditions chevrons rotate 0.25s. Tab, cover-nav and period-card hover fills change in 0.2s. The hour-by-hour sheet rises like the other sheets. Step buttons smooth-scroll the period strip. The page turn is native scroll-snap. The radar holds each frame 650ms and the latest frame 1600ms. With reduced motion, the pencil appears drawn, the radar starts paused on the latest frame, step buttons and page turns jump, and all animations collapse.
+Short exponential ease-out (cubic-bezier(.16,1,.3,1)) for everything. The pencil draws once per page load (1.1s stroke-dashoffset). Sheets and the pick panel rise 24px while fading in (0.32s / 0.28s). Tab, cover-nav and period-card hover fills change in 0.2s. The hour-by-hour sheet rises like the other sheets. Step buttons smooth-scroll the period strip. The page turn is native scroll-snap. The radar holds each frame 650ms and the latest frame 1600ms. With reduced motion, the pencil appears drawn, the radar starts paused on the latest frame, step buttons and page turns jump, and all animations collapse.
 
 ## Do's and Don'ts
 
@@ -562,3 +562,7 @@ Short exponential ease-out (cubic-bezier(.16,1,.3,1)) for everything. The pencil
 - **Don't** uppercase section titles, place names, forecasts, or NWS sentences.
 - **Don't** use proportional figures in any numeric column, card or readout.
 - **Don't** use a sky-gradient hero or weather-photo background; the page is paper.
+
+### Forecast maps
+
+NWS National Digital Forecast Database images from graphical.weather.gov, shown as they are (the maps carry NWS's own colour scales, so none of the page inks recolour them). The section head holds a two-button area toggle (the region, such as Pacific Northwest, and the place's state), and the choice is remembered. Two figures: Weather and High temperature, side by side from 1000px and stacked below that. Each has a 16px/800 title, with the frame's local time in 15px/700 on the right and a soft-graphite relative note ("now", "in 6 hr", or the date). Frames are full-bleed on phones and outlined in graphite from 720px; tapping a frame opens the full-size PNG. Weather steps through 52 three-hour frames with 44px step buttons and a scrubber: a 1px graphite track, a survey-yellow square thumb, survey-green day ticks, and a 2px rust mark at the current time. High temperature uses a 7-button day row in the segmented style. While a frame loads, a small outlined "Loading map…" tag sits top-left and the previous frame stays visible.

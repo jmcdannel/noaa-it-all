@@ -86,8 +86,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 /* alerts */
 .alerts{display:grid;gap:8px;padding-top:12px}
 .alert{border:1px solid var(--ink);background:var(--page-2)}
-.alert summary{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:12px;cursor:pointer}
-.alert summary::-webkit-details-marker{display:none}
+.alert-h{display:flex;gap:10px;align-items:flex-start;padding:12px}
 .alert .sev{color:var(--warn)}
 .alert b{display:block;font-size:15px}
 .alert small{color:var(--ink-2);font-size:13px}
@@ -174,6 +173,35 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 @media (min-width:720px){.dlist div{grid-template-columns:200px minmax(0,1fr);gap:24px}}
 
 .locmap{padding-top:30px}
+.ndfd{padding-top:30px}
+.ndfd .seg .mt{min-height:40px;font-size:13px}
+.nd-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:16px}
+.nd{margin:0;min-width:0}
+.nd-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:8px}
+.nd-head b{font-size:16px;font-weight:800}
+.nd-time{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.nd-time small{font-weight:500;color:var(--ink-2);font-size:13px;margin-left:6px}
+.nd-frame{position:relative;display:block;aspect-ratio:1000/803;margin:0 calc(-1 * var(--gut-r)) 0 calc(-1 * var(--gut));border-block:1px solid var(--ink);background:var(--page-2);overflow:hidden}
+.nd-frame img{display:block;width:100%;height:100%;object-fit:contain}
+.nd-frame img:not([src]){visibility:hidden}
+.nd.busy .nd-frame::after{content:"Loading map…";position:absolute;left:8px;top:8px;background:var(--page);border:1px solid var(--ink);padding:4px 8px;font-size:12px;color:var(--ink)}
+.nd-msg{position:absolute;inset:auto 0 0 0;margin:0;padding:8px 10px;font-size:13px;background:var(--page);border-top:1px solid var(--ink);color:var(--ink)}
+.nd-ctl{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:start;gap:10px;margin-top:10px}
+.nd-ctl .mt{padding:0}
+.nd-scrub{position:relative;touch-action:pan-y;padding-bottom:20px}
+.nd-scrub input{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:0;background:transparent;cursor:pointer}
+.nd-scrub input::-webkit-slider-runnable-track{height:1px;background:var(--ink)}
+.nd-scrub input::-moz-range-track{height:1px;background:var(--ink)}
+.nd-scrub input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:30px;margin-top:-15px;background:var(--cover);border:1px solid var(--cover-ink);border-radius:0}
+.nd-scrub input::-moz-range-thumb{width:18px;height:28px;background:var(--cover);border:1px solid var(--cover-ink);border-radius:0}
+.nd-ticks{position:absolute;left:0;right:0;top:30px;height:34px;pointer-events:none}
+.nd-ticks span{position:absolute;top:0;border-left:1px solid var(--rule);padding:8px 0 0 3px;font-size:10px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--rule);white-space:nowrap}
+.nd-ticks .nd-now{border-left:2px solid var(--now);height:14px;top:-6px;padding:0}
+.nd-days{display:flex;margin-top:10px}
+.nd-days .mt{flex:1 1 0;min-width:0;padding:0 2px;flex-direction:column;gap:0;line-height:1.15}
+.nd-days .mt small{font-weight:500;font-size:11px;opacity:.8}
+@media (min-width:720px){.nd-frame{margin-inline:0;border:1px solid var(--ink)}}
+@media (min-width:1000px){.nd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .radar-panel{position:absolute;z-index:500;left:10px;bottom:24px;display:flex;align-items:stretch;gap:0;background:var(--page);border:1px solid var(--ink)}
 .radar-panel[hidden]{display:none}
 .radar-panel .mt.sq{border:0;border-right:1px solid var(--ink);width:44px;padding:0}
@@ -193,11 +221,9 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .afd-meta{font-size:13px;color:var(--ink-2);margin:8px 0 10px;max-width:68ch}
 .afd-sec{border-top:1px solid var(--rule)}
 .afd-sec:last-of-type{border-bottom:1px solid var(--rule)}
-.afd-sec summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:8px 0}
-.afd-sec summary::-webkit-details-marker{display:none}
-.afd-sec summary b{font-size:16px;font-weight:600}
-.afd-sec summary small{display:block;font-size:12px;color:var(--ink-2)}
-.afd-sec[open] .disc{transform:rotate(180deg)}
+.afd-h{margin:0;padding:14px 0 8px}
+.afd-h b{font-size:16px;font-weight:700}
+.afd-h small{display:block;font-size:12px;font-weight:400;color:var(--ink-2);margin-top:2px}
 .afd-body{padding:2px 0 16px;font-size:15px;line-height:1.55;max-width:68ch}
 .afd-body p{margin:0 0 10px}
 .afd-body ul{margin:0 0 10px;padding-left:18px}
@@ -273,10 +299,7 @@ button.pcard:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
 .stats.small dd small{font-size:13px}
 
 /* mountain */
-details.mtn > summary{list-style:none;cursor:pointer}
-details.mtn > summary::-webkit-details-marker{display:none}
 .mt-line{font-size:13px;color:var(--ink);display:inline-flex;align-items:center;gap:6px;font-weight:600}
-details.mtn[open] .mt-line .disc{transform:rotate(180deg)}
 .mt-block{padding:16px 0;border-bottom:1px solid var(--rule-soft)}
 .mt-block h3{margin:0 0 10px;font-size:13px;font-weight:700}
 .aval{display:flex;gap:14px;align-items:flex-start}
@@ -728,7 +751,7 @@ function buildModel(raw, place) {
   return {
     tz, fmt, ser, stationsUrl: pt.observationStations, hours: h24, all: hours, week, now: h0, gustMph: gustNow != null ? Math.round(KMH2MPH(gustNow)) : null,
     feelF: feelNow != null ? Math.round(C2F(feelNow)) : null, snowLevelFt: levelNow != null ? M2FT(levelNow) : null,
-    elevFt, near, snow24, snowBlocks,
+    elevFt, near, snow24, snowBlocks, state: rl?.state || '',
     issued: Date.parse(fc.updateTime || fc.generatedAt),
     office: pt.cwa || pt.gridId, grid: `${pt.gridX},${pt.gridY}`, gridId: pt.gridId,
     alerts: (raw.alerts?.features || []).map((f) => f.properties),
@@ -802,7 +825,7 @@ function renderPage(p) {
   el.setAttribute('aria-label', placeName(p));
   el.innerHTML = cover + `<div class="sheet">${body}</div>`;
   if (el._mini) { try { el._mini.remove(); } catch {} el._mini = null; }
-  if (m) { drawTrace(el, m, !d.drawn); d.drawn = true; watchMini(el, p); wireMountain(p, el.querySelector('[data-x="mountain"]')); loadExtras(p, m).catch(() => {}); }
+  if (m) { drawTrace(el, m, !d.drawn); d.drawn = true; watchMini(el, p); wireMountain(p, el.querySelector('[data-x="mountain"]')); wireNdfd(el, p, m); loadExtras(p, m).catch(() => {}); }
 }
 function renderStatus(p) {
   const el = document.querySelector(`#page-${CSS.escape(p.id)} .status`);
@@ -888,7 +911,7 @@ function pageBody(p, m, d) {
   const afd = `https://forecast.weather.gov/product.php?site=${encodeURIComponent(m.office)}&issuedby=${encodeURIComponent(m.office)}&product=AFD`;
   const ext = '<svg class="ext-i" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2L3 9"/></svg>';
   const alerts = m.alerts.length
-    ? `<div class="alerts">${m.alerts.map((a) => `<details class="alert"><summary>${/Extreme|Severe/.test(a.severity) ? ICON.warn : ICON.info}<span><b>${esc(a.event)}</b><small>${a.ends || a.expires ? 'Until ' + esc(m.fmt(Date.parse(a.ends || a.expires), { weekday: 'short', hour: 'numeric', minute: '2-digit' })) : esc(a.severity || '')}</small></span></summary><div class="body">${a.headline ? `<p>${esc(a.headline)}</p>` : ''}${a.description ? `<h3>What NWS says</h3><div>${esc(a.description)}</div>` : ''}${a.instruction ? `<h3>What to do</h3><div>${esc(a.instruction)}</div>` : ''}</div></details>`).join('')}</div>`
+    ? `<div class="alerts">${m.alerts.map((a) => `<div class="alert"><div class="alert-h">${/Extreme|Severe/.test(a.severity) ? ICON.warn : ICON.info}<span><b>${esc(a.event)}</b><small>${a.ends || a.expires ? 'Until ' + esc(m.fmt(Date.parse(a.ends || a.expires), { weekday: 'short', hour: 'numeric', minute: '2-digit' })) : esc(a.severity || '')}</small></span></div><div class="body">${a.headline ? `<p>${esc(a.headline)}</p>` : ''}${a.description ? `<h3>What NWS says</h3><div>${esc(a.description)}</div>` : ''}${a.instruction ? `<h3>What to do</h3><div>${esc(a.instruction)}</div>` : ''}</div></div>`).join('')}</div>`
     : `<p class="no-alerts">No active watches, warnings or advisories for this point.</p>`;
   const glance = glanceHTML(p, m);
 
@@ -951,19 +974,160 @@ function pageBody(p, m, d) {
       <div class="mini" data-mini><div class="mini-tools"><button class="mt" type="button" data-mini-radar aria-pressed="true">${ICON.radar}Radar</button></div>${radarPanel()}</div>
       <p class="caption">${p.lat.toFixed(3)}, ${p.lon.toFixed(3)}${m.elevFt != null ? ' · ' + Math.round(m.elevFt).toLocaleString() + ' ft' : ''}</p>
     </section>
+    ${ndfdHTML(p, m)}
     ${afdHTML(m, afd)}
     <div class="foot"><span>Forecast from the National Weather Service ${esc(m.office)} office, grid ${esc(m.grid)}.</span>
       <span><a href="${mapUrl}" target="_blank" rel="noopener">This forecast on weather.gov</a> · <a href="${afd}" target="_blank" rel="noopener">Forecast discussion on weather.gov</a></span></div>`;
+}
+/* ---------- NWS graphical forecast maps (National Digital Forecast Database) ---------- */
+const ND_BASE = 'https://graphical.weather.gov';
+const ND_REGIONS = {
+  pacnorthwest: ['Pacific Northwest', 'WA OR ID'], pacsouthwest: ['Pacific Southwest', 'CA NV'],
+  northrockies: ['Northern Rockies', 'MT WY'], centrockies: ['Central Rockies', 'UT CO'], southrockies: ['Southern Rockies', 'AZ NM'],
+  northplains: ['Northern Plains', 'ND SD'], centplains: ['Central Plains', 'NE KS'], southplains: ['Southern Plains', 'OK TX'],
+  uppermissvly: ['Upper Mississippi Valley', 'MN IA WI'], centmissvly: ['Central Mississippi Valley', 'MO IL'],
+  southmissvly: ['Lower Mississippi Valley', 'AR LA MS'], centgrtlakes: ['Central Great Lakes', 'MI IN OH KY'],
+  eastgrtlakes: ['Eastern Great Lakes', 'NY PA'], northeast: ['Northeast', 'ME NH VT MA RI CT'],
+  midatlantic: ['Mid-Atlantic', 'NJ DE MD DC VA WV'], southeast: ['Southeast', 'NC SC GA FL AL TN'],
+};
+const US_STATES = { AL: 'Alabama', AZ: 'Arizona', AR: 'Arkansas', CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', FL: 'Florida', GA: 'Georgia', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming' };
+function ndAreas(m, p) {
+  const st = m.state;
+  const only = { AK: ['alaska', 'Alaska'], HI: ['hawaii', 'Hawaii'], PR: ['puertorico', 'Puerto Rico'], VI: ['puertorico', 'Puerto Rico'], GU: ['guam', 'Guam'], MP: ['guam', 'Guam'] }[st];
+  if (only) return [{ key: only[0], name: only[1] }];
+  const r = Object.entries(ND_REGIONS).find(([, v]) => v[1].split(' ').includes(st));
+  const region = r ? { key: r[0], name: r[1][0] } : { key: 'conus', name: 'Lower 48' };
+  let state = US_STATES[st] ? { key: US_STATES[st].toLowerCase().replace(/ /g, ''), name: US_STATES[st] } : null;
+  if (st === 'CA') state = p.lat >= 36.5 ? { key: 'northcalifornia', name: 'Northern California' } : { key: 'southcalifornia', name: 'Southern California' };
+  if (st === 'TX') state = p.lon >= -98.5 ? { key: 'easttexas', name: 'East Texas' } : { key: 'westtexas', name: 'West Texas' };
+  return state ? [region, state] : [region];
+}
+// NWS numbers these maps from the latest 00Z or 12Z: weather every 3 hours (52 maps), highs by day ending 00Z (7 maps).
+function ndTimes(now = Date.now()) {
+  const d = new Date(now), y = d.getUTCFullYear(), mo = d.getUTCMonth(), dd = d.getUTCDate();
+  const base = Date.UTC(y, mo, dd, d.getUTCHours() >= 12 ? 12 : 0);
+  const wx = Array.from({ length: 52 }, (_, k) => base + k * 3 * 3600e3);
+  const maxt = Array.from({ length: 7 }, (_, k) => Date.UTC(y, mo, dd + 1, 0) + k * 86400e3);
+  return { wx, maxt, start: Math.max(0, Math.min(51, Math.round((now - base) / (3 * 3600e3)))) };
+}
+const ndZoom = (areas) => (areas[1] && localStorage.getItem('fb.ndZoom') === 'state' ? 1 : 0);
+const ndPage = (key) => `${ND_BASE}/sectors/${key}.php?element=Wx`;
+function ndfdHTML(p, m) {
+  const areas = ndAreas(m, p), z = ndZoom(areas), T = ndTimes();
+  const day = (t, o) => m.fmt(t - 12 * 3600e3, o);
+  const t0 = T.wx[0], span = T.wx[51] - t0;
+  const at = (frac) => `left:calc(10px + ${(frac * 100).toFixed(2)}% - ${(frac * 20).toFixed(1)}px)`;
+  let ticks = '';
+  for (let k = 1; k < 52; k++) {
+    const wd = m.fmt(T.wx[k], { weekday: 'short' });
+    if (wd !== m.fmt(T.wx[k - 1], { weekday: 'short' })) ticks += `<span style="${at(k / 51)}">${k / 51 < 0.93 ? esc(wd) : ''}</span>`;
+  }
+  const nowFrac = (Date.now() - t0) / span;
+  if (nowFrac >= 0 && nowFrac <= 1) ticks += `<span class="nd-now" style="${at(nowFrac)}"></span>`;
+  const frame = `<a class="nd-frame" target="_blank" rel="noopener" aria-label="Open this map full size"><img alt="" width="1000" height="803" decoding="async"><p class="nd-msg" hidden></p></a>`;
+  const head = (title) => `<figcaption class="nd-head"><b>${title}</b><span class="nd-time" data-nd-time aria-live="polite"></span></figcaption>`;
+  return `<section class="sec ndfd" data-ndfd aria-labelledby="h-nd-${esc(p.id)}">
+      <div class="sec-row"><h2 class="sec-t" id="h-nd-${esc(p.id)}">Forecast maps</h2>${areas.length > 1
+        ? `<span class="seg" role="group" aria-label="Map area" data-nd-areas>${areas.map((a, i) => `<button class="mt" type="button" data-nd-area="${i}" aria-pressed="${i === z}">${esc(a.name)}</button>`).join('')}</span>`
+        : `<span class="sec-note">${esc(areas[0].name)}</span>`}</div>
+      <div class="nd-grid">
+        <figure class="nd" data-nd="wx">${head('Weather')}${frame}
+          <div class="nd-ctl"><button class="mt" type="button" data-nd-step="-1" aria-label="3 hours earlier">${ICON.left}</button>
+            <div class="nd-scrub"><input type="range" min="0" max="51" step="1" value="${T.start}" aria-label="Weather map time"><div class="nd-ticks" aria-hidden="true">${ticks}</div></div>
+            <button class="mt" type="button" data-nd-step="1" aria-label="3 hours later">${ICON.right}</button></div>
+        </figure>
+        <figure class="nd" data-nd="maxt">${head('High temperature')}${frame}
+          <div class="nd-days seg" role="group" aria-label="Day">${T.maxt.map((t, k) => `<button class="mt" type="button" data-nd-day="${k}" aria-pressed="${k === 0}">${esc(day(t, { weekday: 'short' }))}<small>${esc(day(t, { day: 'numeric' }))}</small></button>`).join('')}</div>
+        </figure>
+      </div>
+      <p class="caption">National Weather Service forecast maps. Times are local to this place. Tap a map to open it full size. <a class="ext" data-nd-ext href="${ndPage(areas[z].key)}" target="_blank" rel="noopener">Open on weather.gov<svg class="ext-i" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2L3 9"/></svg></a></p>
+    </section>`;
+}
+function wireNdfd(pageEl, p, m) {
+  const sec = pageEl.querySelector('[data-ndfd]');
+  if (!sec) return;
+  const areas = ndAreas(m, p), T = ndTimes();
+  let z = ndZoom(areas);
+  const figs = [...sec.querySelectorAll('.nd')].map((fig) => {
+    const kind = fig.dataset.nd, times = T[kind];
+    const img = fig.querySelector('img'), link = fig.querySelector('.nd-frame'), msg = fig.querySelector('.nd-msg');
+    const lab = fig.querySelector('[data-nd-time]'), range = fig.querySelector('input');
+    let k = kind === 'wx' ? T.start : 0, want = '', timer = 0;
+    const url = (n) => `${ND_BASE}/GraphicalNDFD.php?width=1000&sector=${areas[z].key.toUpperCase()}&element=${kind}&n=${n + 1}`;
+    const when = (t) => (kind === 'wx' ? m.fmt(t, { weekday: 'short', hour: 'numeric' }) : m.fmt(t - 12 * 3600e3, { weekday: 'long' }));
+    const rel = (t) => {
+      if (kind === 'maxt') return m.fmt(t - 12 * 3600e3, { month: 'short', day: 'numeric' });
+      const h = Math.round((t - Date.now()) / 3600e3);
+      return Math.abs(h) < 2 ? 'now' : h >= 48 ? `in ${Math.round(h / 24)} days` : h > 0 ? `in ${h} hr` : `${-h} hr ago`;
+    };
+    const label = () => {
+      const t = times[k];
+      lab.innerHTML = `${esc(when(t))}<small>${esc(rel(t))}</small>`;
+      if (range) { range.value = k; range.setAttribute('aria-valuetext', when(t)); }
+      fig.querySelectorAll('[data-nd-day]').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.ndDay === k)));
+      fig.querySelectorAll('[data-nd-step]').forEach((b) => { b.disabled = +b.dataset.ndStep < 0 ? k <= 0 : k >= times.length - 1; });
+    };
+    const load = () => {
+      clearTimeout(timer);
+      const u = url(k);
+      if (want === u) return;
+      want = u;
+      fig.classList.add('busy');
+      const im = new Image();
+      im.onload = () => {
+        if (want !== u) return;
+        img.src = u; link.href = u; msg.hidden = true; fig.classList.remove('busy');
+        img.alt = `NWS ${kind === 'wx' ? 'predominant weather' : 'daytime high temperature'} map, ${areas[z].name}, ${when(times[k])}`;
+        if (k + 1 < times.length) new Image().src = url(k + 1);
+      };
+      im.onerror = () => {
+        if (want !== u) return;
+        want = ''; fig.classList.remove('busy');
+        msg.textContent = navigator.onLine === false ? 'Offline. These maps need a connection.' : "This NWS map didn't load. Try another time, or open it on weather.gov.";
+        msg.hidden = false;
+      };
+      im.src = u;
+    };
+    const go = (n, now) => {
+      k = Math.max(0, Math.min(times.length - 1, n)); label();
+      clearTimeout(timer);
+      if (now) load(); else timer = setTimeout(load, 220);
+    };
+    fig.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.ndStep) go(k + +b.dataset.ndStep, true);
+      else if (b.dataset.ndDay != null) go(+b.dataset.ndDay, true);
+    });
+    if (range) { range.addEventListener('input', () => go(+range.value)); range.addEventListener('change', () => go(+range.value, true)); }
+    label();
+    return { load, reset() { want = ''; } };
+  });
+  sec.querySelector('[data-nd-areas]')?.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-nd-area]');
+    if (!b || +b.dataset.ndArea === z) return;
+    z = +b.dataset.ndArea;
+    try { localStorage.setItem('fb.ndZoom', z ? 'state' : 'region'); } catch {}
+    sec.querySelectorAll('[data-nd-area]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    sec.querySelector('[data-nd-ext]').href = ndPage(areas[z].key);
+    figs.forEach((f) => { f.reset(); f.load(); });
+  });
+  if (pageEl._ndio) pageEl._ndio.disconnect();
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((x) => x.isIntersecting)) return;
+    io.disconnect(); figs.forEach((f) => f.load());
+  }, { rootMargin: '600px 0px' });
+  io.observe(sec);
+  pageEl._ndio = io;
 }
 function afdHTML(m, url) {
   const a = m.afd;
   const head = `<div class="sec-row"><h2 class="sec-t">Forecast discussion</h2><span class="sec-note">NWS ${esc((a && a.office) || m.office)}</span></div>`;
   if (!a || !a.sections.length) return `<section class="sec afd">${head}<p class="afd-meta">The discussion from the ${esc(m.office)} office isn't available right now. <a href="${url}" target="_blank" rel="noopener">Read it on weather.gov</a></p></section>`;
-  const firstOpen = a.sections.findIndex((x) => !/^Update$/.test(x.name));
   const body = (b) => b.list ? `<ul>${b.list.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>` : b.lines ? `<p>${b.lines.map(esc).join('<br>')}</p>` : `<p>${esc(b.text)}</p>`;
   return `<section class="sec afd">${head}
     <p class="afd-meta">Written by forecasters at NWS ${esc(a.office || m.office)}, issued ${esc(m.fmt(a.issued, { weekday: 'short', hour: 'numeric', minute: '2-digit' }))}. It explains the reasoning behind the forecast for the whole region.</p>
-    ${a.sections.map((x, i) => `<details class="afd-sec"${i === firstOpen ? ' open' : ''}><summary><span><b>${esc(x.name)}</b>${x.sub ? `<small>${esc(x.sub)}</small>` : ''}</span><svg class="disc" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="afd-body">${x.blocks.map(body).join('')}${x.issued ? `<p class="afd-issued">Issued ${esc(x.issued)}</p>` : ''}</div></details>`).join('')}
+    ${a.sections.map((x, i) => `<div class="afd-sec"><h3 class="afd-h"><b>${esc(x.name)}</b>${x.sub ? `<small>${esc(x.sub)}</small>` : ''}</h3><div class="afd-body">${x.blocks.map(body).join('')}${x.issued ? `<p class="afd-issued">Issued ${esc(x.issued)}</p>` : ''}</div></div>`).join('')}
     <p class="afd-meta"><a href="${url}" target="_blank" rel="noopener">Full discussion on weather.gov</a></p>
   </section>`;
 }
@@ -1668,11 +1832,11 @@ function mountainHTML(p, m) {
       </dl><div class="spark-bars" aria-label="Snow depth, last ${d.length} days">${bars}</div></div>
       <p class="caption">Daily reading for ${esc(new Date(dNow.d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }))}. SNOTEL is run by the USDA, not NOAA.</p></div>`;
   }
-  return `<section class="sec mountain"><details class="mtn" ${p._mtOpen ? 'open' : ''}><summary class="sec-row">
-      <h2 class="sec-t">Mountain conditions</h2><span class="mt-line">${esc([avalLine, snowLine].filter(Boolean).join(' · '))}<svg class="disc" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></span></summary>
+  return `<section class="sec mountain"><div class="sec-row">
+      <h2 class="sec-t">Mountain conditions</h2><span class="mt-line">${esc([avalLine, snowLine].filter(Boolean).join(' · '))}</span></div>
       ${aval}${snow}
       <div class="mt-block"><h3>Nearby weather stations · last 24 hours</h3><div class="stations" data-stations><p class="caption">Loading station readings…</p></div></div>
-    </details></section>`;
+    </section>`;
 }
 function climateHTML(p, m) {
   const c = xGet(p.id).climate;
@@ -1693,10 +1857,14 @@ function fillExtras(p) {
   if (mt) { mt.innerHTML = mountainHTML(p, d.model); wireMountain(p, mt); }
 }
 function wireMountain(p, host) {
-  const det = host.querySelector('details.mtn');
-  if (!det) return;
-  det.addEventListener('toggle', () => { p._mtOpen = det.open; if (det.open) loadStations(p, det.querySelector('[data-stations]')); });
-  if (det.open) loadStations(p, det.querySelector('[data-stations]'));
+  const box = host && host.querySelector('[data-stations]');
+  if (!box) return;
+  // Stations load when the section nears the screen, so scrolling is all it takes.
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((x) => x.isIntersecting)) return;
+    io.disconnect(); loadStations(p, box);
+  }, { rootMargin: '600px 0px' });
+  io.observe(box);
 }
 async function loadStations(p, box) {
   const d = data.get(p.id);

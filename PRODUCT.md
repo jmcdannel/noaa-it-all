@@ -52,7 +52,7 @@ Live NWS API data only. No other content, claims or testimonials exist, and none
 
 ## Product Principles
 
-1. Show the answer before the details. The next few hours and the next couple of days come first, and the full NWS text is one tap away.
+1. Show the answer before the details. The next few hours and the next couple of days come first. Everything else follows on the same page, fully shown, so scrolling reaches all the data without extra taps.
 2. Never hide NWS facts. Present them better, and do not paraphrase forecasts into something NWS did not say.
 3. Changing place should feel effortless: a saved place is one tap, and a new place takes a tap, a search or GPS.
 4. Thumb-first on mobile. Every control should be easy to reach and hit outdoors with cold hands.
