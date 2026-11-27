@@ -20,6 +20,8 @@
 <style>
 @font-face{font-family:"Public Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url("vendor/public-sans-latin.woff2") format("woff2")}
 :root{
+  --hl:color-mix(in srgb, var(--cover) 42%, var(--page)); --day:color-mix(in srgb, var(--cover) 11%, var(--page)); --night:color-mix(in srgb, var(--lo) 11%, var(--page));
+  --storm:color-mix(in srgb, var(--lo) 16%, var(--label)); --alert:color-mix(in srgb, var(--cover) 18%, var(--page)); --alert-sev:color-mix(in srgb, var(--warn) 11%, var(--page));
   --cover:#E9B300; --cover-ink:#22262A; --label:#FFFFFF;
   --page:#F4F7F1; --page-2:#E8EEE6;
   --ink:#22262A; --ink-2:#3E5246; --rule:#2F6B4F; --rule-soft:rgba(47,107,79,.28);
@@ -36,7 +38,7 @@
     --cover:#D19E0B; --cover-ink:#121517; --label:#1B2023;
     --page:#121517; --page-2:#1B2023;
     --ink:#E4EAE3; --ink-2:#AFC2B5; --rule:#6FA88A; --rule-soft:rgba(111,168,138,.28);
-    --now:#F07A3A; --warn:#FF8A80; --scrim:rgba(0,0,0,.6); --hi:#FF8F52; --lo:#7DB3FF;
+    --now:#F07A3A; --warn:#FF8A80; --scrim:rgba(0,0,0,.6); --hi:#FF8F52; --lo:#7DB3FF; --day:color-mix(in srgb, var(--cover) 5%, var(--page)); --night:color-mix(in srgb, var(--lo) 13%, var(--page)); --hl:color-mix(in srgb, var(--cover) 50%, var(--page)); --alert:color-mix(in srgb, var(--cover) 9%, var(--page-2));
     color-scheme:dark;
   }
 }
@@ -44,7 +46,7 @@
   --cover:#D19E0B; --cover-ink:#121517; --label:#1B2023;
   --page:#121517; --page-2:#1B2023;
   --ink:#E4EAE3; --ink-2:#AFC2B5; --rule:#6FA88A; --rule-soft:rgba(111,168,138,.28);
-  --now:#F07A3A; --warn:#FF8A80; --scrim:rgba(0,0,0,.6); --hi:#FF8F52; --lo:#7DB3FF;
+  --now:#F07A3A; --warn:#FF8A80; --scrim:rgba(0,0,0,.6); --hi:#FF8F52; --lo:#7DB3FF; --day:color-mix(in srgb, var(--cover) 5%, var(--page)); --night:color-mix(in srgb, var(--lo) 13%, var(--page)); --hl:color-mix(in srgb, var(--cover) 50%, var(--page)); --alert:color-mix(in srgb, var(--cover) 9%, var(--page-2));
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -100,7 +102,8 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 
 /* alerts */
 .alerts{display:grid;gap:8px;padding-top:12px}
-.alert{border:1px solid var(--ink);background:var(--page-2)}
+.alert{border:1px solid var(--ink);background:var(--alert)}
+.alert.sev-hi{background:var(--alert-sev);border-color:var(--warn)}
 .alert-h{display:flex;gap:10px;align-items:flex-start;padding:12px}
 .alert .sev{color:var(--warn)}
 .alert b{display:block;font-size:15px}
@@ -138,7 +141,8 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 
 .sec{padding-top:30px}
 .sec-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
-.sec-t{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.sec-t{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.15;padding:0 3px;margin-left:-3px;
+  background:linear-gradient(transparent 56%, var(--hl) 56% 94%, transparent 94%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .sec-note{margin:0;font-size:13px;color:var(--ink-2)}
 .sec-note b{color:var(--ink)}
 .sec-tools{display:flex;align-items:center;gap:6px}
@@ -158,10 +162,13 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .pstrip:focus-visible{outline-offset:3px}
 .pcard{grid-row:span 6;display:grid;grid-template-rows:subgrid;justify-items:center;text-align:center;padding:14px 10px 16px;border-left:1px solid var(--rule);scroll-snap-align:start;row-gap:6px}
 .pcard:first-child{border-left:0}
-.pcard.night{background:var(--page-2)}
+.pcard{background:var(--day)}
+.pcard.night{background:var(--night)}
 .pcard h3{margin:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.3;text-wrap:balance;align-self:start}
 .wx{width:52px;height:52px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin:4px 0}
 .wx-cloud{fill:var(--label)}
+.wx-cloud.storm{fill:var(--storm)}
+.wx-rain{stroke:var(--lo);stroke-width:2.2}
 .wx-sun{fill:var(--cover)}
 .wx-moon{fill:var(--page)}
 .wx-dot{stroke-width:3.2}
@@ -276,10 +283,10 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .moon-i .lit{fill:var(--cover);stroke:none}
 
 /* period cards are buttons */
-button.pcard{font:inherit;color:inherit;background:transparent;border:0;border-left:1px solid var(--rule);cursor:pointer;transition:background .2s var(--ease)}
-button.pcard.night{background:var(--page-2)}
+button.pcard{font:inherit;color:inherit;background:var(--day);border:0;border-left:1px solid var(--rule);cursor:pointer;transition:background .2s var(--ease)}
+button.pcard.night{background:var(--night)}
 button.pcard:first-child{border-left:0}
-button.pcard:hover{background:color-mix(in srgb, var(--cover) 22%, var(--page))}
+button.pcard:hover{background:color-mix(in srgb, var(--cover) 30%, var(--page))}
 button.pcard:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
 
 /* precipitation ahead */
@@ -877,7 +884,7 @@ function wxKind(url) {
   if (/few|sct/.test(c)) return 'partly';
   return 'clear';
 }
-const WX_CLOUD = (dx = 0, dy = 0) => `<path class="wx-cloud" transform="translate(${dx} ${dy})" d="M15 33h19a6.5 6.5 0 0 0 .6-13A9.5 9.5 0 0 0 16.2 18 7.5 7.5 0 0 0 15 33z"/>`;
+const WX_CLOUD = (dx = 0, dy = 0, storm = false) => `<path class="wx-cloud${storm ? ' storm' : ''}" transform="translate(${dx} ${dy})" d="M15 33h19a6.5 6.5 0 0 0 .6-13A9.5 9.5 0 0 0 16.2 18 7.5 7.5 0 0 0 15 33z"/>`;
 const WX_SUN = (cx, cy, r) => {
   let rays = '';
   for (let k = 0; k < 8; k++) { const a = (k * Math.PI) / 4, r1 = r + 3, r2 = r + 6.5; rays += `M${(cx + r1 * Math.cos(a)).toFixed(1)} ${(cy + r1 * Math.sin(a)).toFixed(1)}L${(cx + r2 * Math.cos(a)).toFixed(1)} ${(cy + r2 * Math.sin(a)).toFixed(1)}`; }
@@ -893,10 +900,10 @@ function wxIcon(url, day, label) {
     case 'partly': g = sky(17, 17, 5.5) + WX_CLOUD(3, 4); break;
     case 'mostly': g = sky(15, 15, 4.5) + WX_CLOUD(1, 2); break;
     case 'cloud': g = WX_CLOUD(0, 1); break;
-    case 'rain': g = WX_CLOUD(0, -5) + '<path d="M17 34l-2 5M24 34l-2 5M31 34l-2 5"/>'; break;
-    case 'snow': g = WX_CLOUD(0, -5) + '<path class="wx-dot" d="M16.5 36h.01M24 39h.01M31.5 36h.01M20 42h.01M28 42h.01"/>'; break;
-    case 'mix': g = WX_CLOUD(0, -5) + '<path d="M18 34l-2 5M30 34l-2 5"/><path class="wx-dot" d="M24 37h.01M22 42h.01"/>'; break;
-    case 'thunder': g = WX_CLOUD(0, -5) + '<path class="wx-bolt" d="M25 31l-5 7h5l-3 6"/>'; break;
+    case 'rain': g = WX_CLOUD(0, -5, true) + '<path class="wx-rain" d="M17 34l-2 5M24 34l-2 5M31 34l-2 5"/>'; break;
+    case 'snow': g = WX_CLOUD(0, -5, true) + '<path class="wx-dot" d="M16.5 36h.01M24 39h.01M31.5 36h.01M20 42h.01M28 42h.01"/>'; break;
+    case 'mix': g = WX_CLOUD(0, -5, true) + '<path class="wx-rain" d="M18 34l-2 5M30 34l-2 5"/><path class="wx-dot" d="M24 37h.01M22 42h.01"/>'; break;
+    case 'thunder': g = WX_CLOUD(0, -5, true) + '<path class="wx-bolt" d="M25 31l-5 7h5l-3 6"/>'; break;
     case 'fog': g = '<path d="M10 18h28M8 24h32M12 30h24M16 36h16"/>'; break;
   }
   return `<svg class="wx" viewBox="0 0 48 48" role="img" aria-label="${esc(label)}">${g}</svg>`;
@@ -928,7 +935,7 @@ function pageBody(p, m, d) {
   const afd = `https://forecast.weather.gov/product.php?site=${encodeURIComponent(m.office)}&issuedby=${encodeURIComponent(m.office)}&product=AFD`;
   const ext = '<svg class="ext-i" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2L3 9"/></svg>';
   const alerts = m.alerts.length
-    ? `<div class="alerts">${m.alerts.map((a) => `<div class="alert"><div class="alert-h">${/Extreme|Severe/.test(a.severity) ? ICON.warn : ICON.info}<span><b>${esc(a.event)}</b><small>${a.ends || a.expires ? 'Until ' + esc(m.fmt(Date.parse(a.ends || a.expires), { weekday: 'short', hour: 'numeric', minute: '2-digit' })) : esc(a.severity || '')}</small></span></div><div class="body">${a.headline ? `<p>${esc(a.headline)}</p>` : ''}${a.description ? `<h3>What NWS says</h3><div>${esc(a.description)}</div>` : ''}${a.instruction ? `<h3>What to do</h3><div>${esc(a.instruction)}</div>` : ''}</div></div>`).join('')}</div>`
+    ? `<div class="alerts">${m.alerts.map((a) => `<div class="alert${/Extreme|Severe/.test(a.severity) ? ' sev-hi' : ''}"><div class="alert-h">${/Extreme|Severe/.test(a.severity) ? ICON.warn : ICON.info}<span><b>${esc(a.event)}</b><small>${a.ends || a.expires ? 'Until ' + esc(m.fmt(Date.parse(a.ends || a.expires), { weekday: 'short', hour: 'numeric', minute: '2-digit' })) : esc(a.severity || '')}</small></span></div><div class="body">${a.headline ? `<p>${esc(a.headline)}</p>` : ''}${a.description ? `<h3>What NWS says</h3><div>${esc(a.description)}</div>` : ''}${a.instruction ? `<h3>What to do</h3><div>${esc(a.instruction)}</div>` : ''}</div></div>`).join('')}</div>`
     : `<p class="no-alerts">No active watches, warnings or advisories for this point.</p>`;
   const glance = glanceHTML(p, m);
 

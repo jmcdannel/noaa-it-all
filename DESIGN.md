@@ -218,15 +218,15 @@ components:
     rounded: "{rounded.none}"
     width: "min(640px, 100%)"
   period-card:
-    backgroundColor: "{colors.page}"
+    backgroundColor: "color-mix(in srgb, #E9B300 11%, #F4F7F1)"
     textColor: "{colors.ink}"
     rounded: "{rounded.none}"
     padding: "14px 10px 16px"
     width: "128px"
   period-card-night:
-    backgroundColor: "{colors.page-2}"
+    backgroundColor: "color-mix(in srgb, #1D5AA6 11%, #F4F7F1)"
   period-card-hover:
-    backgroundColor: "color-mix(in srgb, #E9B300 22%, #F4F7F1)"
+    backgroundColor: "color-mix(in srgb, #E9B300 30%, #F4F7F1)"
   period-high:
     textColor: "{colors.hi}"
     typography: "{typography.period-temp}"
@@ -319,7 +319,7 @@ components:
 
 **Creative North Star: "The All-Weather Field Book"**
 
-Each saved place is one page in a yellow survey field book kept in a jacket pocket. The forecast is entered in ruled columns and graphed in pencil. A yellow cover band carries a white label box with the place written on it; below it, a cool green-white page is ruled in survey green at one device pixel, and everything is written in graphite. One rust mark, and only one meaning, is reserved for "now". The only other color on the page is a warm/cool pair that says whether a temperature is a High or a Low.
+Each saved place is one page in a yellow survey field book kept in a jacket pocket. The forecast is entered in ruled columns and graphed in pencil. A yellow cover band carries a white label box with the place written on it; below it, a cool green-white page is ruled in survey green at one device pixel, and everything is written in graphite. One rust mark, and only one meaning, is reserved for "now". A warm/cool pair says whether a temperature is a High or a Low, and the same yellow and blue, washed thin, mark day and night periods and rain. Section titles carry a yellow highlighter stroke, like a heading marked up in the book.
 
 The system is dense and printed rather than layered. Depth comes from rules and boxed outlines, not from shadows. Corners are square throughout. Numbers are set in tabular figures so columns hold still from card to card and day to day. Each section opens with a heavy sentence-case title ruled off in survey green, like a heading entered by hand at the top of a field-book page; the small tracked uppercase heads are kept for the labels over a column or a figure. At night the book is read under a headlamp: the page turns graphite, the band dims to a deeper yellow, and the rules lift to a pale green.
 
@@ -327,7 +327,8 @@ Places sit one swipe apart on a horizontal book with a hard snap. Each page open
 
 **Key Characteristics:**
 - Yellow cover band, green-white page, survey-green hairline rules, graphite ink.
-- One rust mark, used only for "now"; one warm/cool pair, used only for High and Low.
+- One rust mark, used only for "now"; one warm/cool pair for High and Low, and thin yellow/blue washes for day and night.
+- A yellow highlighter stroke behind every section title.
 - Square corners and 1px outlines everywhere; the page dots, the survey-stake marker, the drawn sun and moon, and chart dots are the only round forms.
 - Tabular numerals on every figure; 22px/800 section titles over a survey-green rule; small tracked uppercase heads over columns and figures.
 - Flat: no shadows on page or sheets. A scrim separates sheets; a page-2 tint marks night.
@@ -352,7 +353,7 @@ Three printed inks on a pale page (cover yellow, survey green, graphite), one ru
 
 ### Neutral
 - **Green-White Page** (page): the page ground, sheet bodies, map tools, the radar panel, the moon fill in weather icons, and the hollow fill of the now dot. Night: page-night.
-- **Pressed Page** (page-2): night period cards, alert boxes, the map backdrop while tiles load. Night: page-2-night.
+- **Pressed Page** (page-2): the map and forecast-map backdrops while images load, the unlit part of the moon-phase icon. Night: page-2-night.
 - **Label White** (label): the label box, text fields, and the cloud fill in weather icons; the one surface whiter than the page. Night: label-night.
 - **Graphite** (ink): all text, the pencil trace, weather-icon line work, 1px outlines on buttons, the period strip, sheets, map frame and tab bar. Night: ink-night.
 - **Soft Graphite** (ink-2): secondary text (section notes, captions, short forecasts, precip %, units, issue times). Night: ink-2-night.
@@ -367,11 +368,15 @@ Two standard scales are copied exactly from their owners and never re-tinted for
 ### Named Rules
 **The Three Inks Rule.** Every mark on a page is cover yellow, survey green, or graphite (and their tints). A new element picks one of the three; it never introduces a fourth hue. The fenced exceptions below are the only ones.
 
+**The Highlighter Rule.** Every section title sits on a Survey Yellow highlighter stroke: a hard-edged band from 56% to 94% of the line height, 42% yellow over the page (50% at night), 3px past the text at each end, cloned across wrapped lines. It is wayfinding down a long page, so it marks section titles only, never body text, figures or links.
+
+**The Day and Night Wash.** Period cards are washed by time of day: day cards 11% Survey Yellow over the page, night cards 11% Cool Low (at night 5% yellow and 13% blue, so the yellow never turns brown on graphite). The card's name and its High or Low word carry the meaning; the wash only lets day and night rhythm read across the strip at a glance. Hover deepens to 30% yellow.
+
 **The One Rust Mark Rule.** Rust means "now" and nothing else: the now line and the now dot on the trace. Never use rust for emphasis, links, alerts, selection, weather, or brand.
 
-**The High and Low Exception.** Warm High and Cool Low are the one user-approved semantic pair. They color the High or Low figure in a period card, and the figure always carries the word "High" or "Low", so the word, not the hue, holds the meaning. Their only other use is as page tints in the precipitation-type timeline: cool for liquid (Rain, Rain and snow), warm for Thunderstorms, each segment labeled with its word and its time span. Warm High sits close to rust in hue, so it never appears on the 24-hour trace or anywhere "now" is drawn; and neither color spreads to observed temperatures, chart lines, other backgrounds, or icons.
+**The High and Low Exception.** Warm High and Cool Low are the one user-approved semantic pair. They color the High or Low figure in a period card, and the figure always carries the word "High" or "Low", so the word, not the hue, holds the meaning. Their other uses are page tints in the precipitation-type timeline (cool for liquid, warm for Thunderstorms, each segment labeled with its word and its time span), the day and night washes above, and in weather icons Cool Low rain strokes and a 16% Cool Low fill on clouds that bring precipitation. Warm High sits close to rust in hue, so it never appears on the 24-hour trace or anywhere "now" is drawn; and neither color spreads to observed temperatures, chart lines, other backgrounds, or icons.
 
-**The Borrowed Color Exception.** Three more non-ink color sets are allowed and stay fenced: Alert Red on the severe-alert glyph, always paired with the triangle shape; the NWS radar reflectivity scale, only in radar tiles and the radar legend; and the avalanche danger scale, only in the avalanche badge, always with the level number and name. Each is the data's own published key; none is reused elsewhere, and no new element borrows from them.
+**The Borrowed Color Exception.** Three more non-ink color sets are allowed and stay fenced: Alert Red on the severe-alert glyph, always paired with the triangle shape, plus that alert box's 1px border and an 11% Alert Red fill (other alerts sit on an 18% Survey Yellow fill, 9% at night); the NWS radar reflectivity scale, only in radar tiles and the radar legend; and the avalanche danger scale, only in the avalanche badge, always with the level number and name. Each is the data's own published key; none is reused elsewhere, and no new element borrows from them.
 
 ## Typography
 
@@ -402,7 +407,7 @@ Two standard scales are copied exactly from their owners and never re-tinted for
 
 **The Printed Head Rule.** Uppercase tracking is for heads printed over a column or a figure (period names, stat labels), the running head and nav-button labels. A short NWS name or sky word may be uppercased only in that head role. Section titles, place names, forecasts and NWS sentences are never uppercased.
 
-**The Titled Section Rule.** Every page section opens the same way: a 22px/800 sentence-case title on the left, an optional 13px soft-graphite note, a link, a 13px/600 graphite status line, or a two-button area toggle on the right, baseline-aligned, and a 1px survey-green rule beneath with 12px above it. Context that belongs to the whole section (the snow level, the source office) goes in that note, not in a separate line. The at-a-glance lead is the one untitled block: it is the page's first entry, not a section.
+**The Titled Section Rule.** Every page section opens the same way: a 22px/800 sentence-case title on its yellow highlighter stroke on the left, an optional 13px soft-graphite note, a link, a 13px/600 graphite status line, or a two-button area toggle on the right, baseline-aligned, and a 1px survey-green rule beneath with 12px above it. Context that belongs to the whole section (the snow level, the source office) goes in that note, not in a separate line. The at-a-glance lead is the one untitled block: it is the page's first entry, not a section.
 
 ## Layout
 
@@ -447,7 +452,7 @@ The book's cover: Survey Yellow, 20px plus the top safe area above, 14px below, 
 The opening of every page section (see The Titled Section Rule): a 22px/800 title, and on the right either a 13px soft-graphite note (with any key figure in graphite bold), the 12px underlined "Open full map" link, or a 14px/600 external link with an 11px arrow. In Forecast periods the right side also carries the step buttons on fine pointers. A 1px survey-green rule closes the head 12px below the title.
 
 ### Alerts Line
-Always present directly under the status line. With no alerts it is a single 14px soft-graphite sentence, "No active watches, warnings or advisories for this point.", closed by a faint survey-green rule. With alerts it becomes a stack of graphite-outlined page-2 boxes: triangle glyph in Alert Red for Severe/Extreme, circle-i for others; event name 15px bold; an "Until" time in soft graphite; the NWS text always shown below, with 11px label-style subheads.
+Always present directly under the status line. With no alerts it is a single 14px soft-graphite sentence, "No active watches, warnings or advisories for this point.", closed by a faint survey-green rule. With alerts it becomes a stack of outlined boxes: Severe and Extreme alerts on an 11% Alert Red fill with a 1px Alert Red border, others on an 18% Survey Yellow fill with a graphite border; triangle glyph in Alert Red for Severe/Extreme, circle-i for others; event name 15px bold; an "Until" time in soft graphite; the NWS text always shown below, with 11px label-style subheads.
 
 ### At a Glance
 The page's lead entry, 18px under the alerts line, with no section title.
@@ -463,11 +468,11 @@ The signature summary of the forecast: every NWS period as a column in one ruled
 - **Temperature:** "High N°" in Warm High on day cards, "Low N°" in Cool Low on night cards (24px/800).
 - **Precip:** "N% precip" in 13px soft graphite.
 - **Snow:** "N.N″ snow" in 13px/700 graphite when 0.1″ or more; the row stays reserved when empty.
-Night cards sit on Pressed Page. Hover tints a card Survey Yellow at 22% over the page (0.2s); focus is a 2px graphite outline inset 3px so it stays inside the strip. Below the strip, a 13px caption gives the point, elevation, office and issue time, and says a period can be tapped.
+Day cards sit on the yellow day wash and night cards on the blue night wash (see The Day and Night Wash). Hover tints a card Survey Yellow at 30% over the page (0.2s); focus is a 2px graphite outline inset 3px so it stays inside the strip. Below the strip, a 13px caption gives the point, elevation, office and issue time, and says a period can be tapped.
 - **Step buttons:** 36 by 32px square outlined graphite buttons with a chevron, shown only on hover-capable fine pointers; hover fills Survey Yellow with a cover-ink outline.
 
 ### Weather Icons
-Drawn line icons on a 48-unit grid, rendered at 52px: graphite strokes at 1.8 with round caps and joins. Clouds fill Label White, the sun fills Survey Yellow with eight short rays, the moon fills page. Rain is short slanted strokes, snow is heavy dots, fog is stacked rules. Icons always carry the short forecast as their accessible label.
+Drawn line icons on a 48-unit grid, rendered at 52px: graphite strokes at 1.8 with round caps and joins. Fair-weather clouds fill Label White; clouds bringing rain, snow, a mix or thunder fill a 16% Cool Low tint of Label White. The sun fills Survey Yellow with eight short rays, the moon fills page. Rain is short slanted Cool Low strokes at 2.2, snow is heavy graphite dots, fog is stacked rules. Icons always carry the short forecast as their accessible label.
 
 ### Precipitation Ahead
 A titled section directly after the period strip.
@@ -556,7 +561,7 @@ Short exponential ease-out (cubic-bezier(.16,1,.3,1)) for everything. The pencil
 
 ### Don't:
 - **Don't** use rust for anything but now: not for alerts, emphasis, links, selection, weather icons, or brand.
-- **Don't** spread Warm High or Cool Low beyond the period-card figure and the type-timeline tints: not to the trace, chart lines, observed temperatures, other backgrounds, or icons.
+- **Don't** spread Warm High or Cool Low beyond the period-card figure, the day/night washes, the type-timeline tints and the icon rain and storm cloud: not to the trace, chart lines, observed temperatures, or other backgrounds.
 - **Don't** add drop shadows, rounded corners, gradients, or translucent frosted panels to page content, controls, or sheets.
 - **Don't** introduce another hue. Alert Red stays on the severe-alert glyph, the radar scale stays in the radar layer and its legend, the avalanche scale stays in its badge, and High/Low stay on their figures and the type timeline.
 - **Don't** uppercase section titles, place names, forecasts, or NWS sentences.

@@ -1,6 +1,6 @@
 // NOAA-It-All service worker.
 // App shell: cache-first. NWS data: network-first with cached fallback. Fonts, Leaflet, map tiles: stale-while-revalidate.
-const VERSION = 'fb-v10';
+const VERSION = 'fb-v11';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'vendor/leaflet.css', 'vendor/public-sans-latin.woff2', 'snapshot.json',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'];
